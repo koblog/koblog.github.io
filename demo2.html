@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Untitled Document</title>
+	<meta name="Author" content="" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+</head>
+<body>
+
+<h3>DEMO</h3>
+<p> </p>
+<p><span class="js-copytext">Test</span></p>
+<p><button class="js-copybtn">copy</button></p>
+<script type="text/javascript">// <![CDATA[
+var copyEmailBtn = document.querySelector('.js-copybtn');
+copyEmailBtn.addEventListener('click', function(event) {
+    // .js-copytextのテキストを選択
+    var copyText = document.querySelector('.js-copytext');
+    var range = document.createRange();
+    range.selectNode(copyText);
+    window.getSelection().addRange(range);
+    try {
+        // テキストを選択したらクリップボードにコピーする
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Copy command was ' + msg);
+        alert('コピーしました');
+    } catch(err) {
+        console.log('Oops, unable to copy');
+    }
+    // 選択状態を解除する
+    window.getSelection().removeAllRanges();
+});
+// ]]></script>
+<p> </p>
+<p>完成すると、こんな感じになります。</p>
+<p>copyと書かれたボタンを押してみてください。自動でクリップボードに「Test」とコピーされると思います。試しに下の入力欄にペーストしてみてください。</p>
+<p>＊スマホだと入力欄が見えない/表示されないかもしれません。</p>
+<p><input name="example1" type="text" /></p>
+<p> </p>
+
+
+</body>
+</html>

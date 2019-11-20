@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Untitled Document</title>
+	<meta name="Author" content="" />
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+#copy-page {
+  display: inline-block;
+  width: 160px;
+  padding: 8px 0;
+  font-size: 90%;
+  text-align: center;
+  color: #666;
+  border: 1px solid #666;
+}
+	</style>
+	
+<script>
+document.getElementById("copy-page").onclick = function() {
+  $(document.body).append("<textarea id=\"copyTarget\" style=\"position:absolute; left:-9999px; top:0px;\" readonly=\"readonly\">" +location.href+ "</textarea>");
+  let obj = document.getElementById("copyTarget");
+  let range = document.createRange();
+  range.selectNode(obj);
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  document.getElementById("cAction").innerHTML = "Success !";
+};
+</script>
+	
+</head>
+<body>
+
+	<p><button type="button" id="copy-page"><span id="cAction">URLをコピー</span></button></p>
+
+
+</body>
+</html>
